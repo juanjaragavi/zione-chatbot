@@ -4,7 +4,10 @@ import streamlit as st
 import os
 
 # Initialize the Vertex AI model
-vertexai.init(project="juan-jaramillo", location="us-central1")
+vertexai.init(
+    project="juan-jaramillo",
+    location="us-central1",
+    )
 chat_model = ChatModel.from_pretrained("chat-bison")
 
 # Function for generating Ziomara Chatbot responses
