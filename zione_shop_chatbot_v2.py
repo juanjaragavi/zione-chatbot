@@ -133,7 +133,7 @@ examples_alegre = [
                 output_text="""¡Oh sí, bonita! 🌟 Descarga nuestra app en Google Play o desde este enlace: https://play.google.com/store/apps/details?id=com.zione. 📲"""
             ),
             InputOutputTextPair(
-             input_text="""¿Cómo puedo empezar a vender?""",
+                input_text="""¿Cómo puedo empezar a vender?""",
                 output_text="""¡Oye, chica emprendedora! 🚀 Solo necesitas registrarte en nuestra app y ya puedes empezar a vender. 🛒 Tus pagos te llegarán a Nequi o Daviplata cada 10 días. ¿No es genial? 🌟"""
             ),
             InputOutputTextPair(
@@ -546,9 +546,24 @@ persona_to_examples = {
 # Streamlit UI Configuration
 
 # Page Tab title
-st.set_page_config(page_title="🙋🏻‍♀️ ¡Hola! Soy Ziomara.")
+st.set_page_config(page_title="ZIONE Shop 🙋🏻‍♀️ ¡Hola! Soy Ziomara.")
+
+st.markdown(
+    """
+    <style>
+    h1, h2, h3 {
+        font-family: 'Quicksand', sans-serif;
+    }
+    p {
+        font-family: 'Quicksand', sans-serif;
+    }
+    </style>
+    """, 
+    unsafe_allow_html=True
+)
 
 # Main title
+
 st.title("ZIONE Shop")
 
 # Header
@@ -557,6 +572,7 @@ with st.header("🙋🏻‍♀️ ¡Hola! Soy Ziomara."):
 
 #Sidebar
 with st.sidebar:
+    st.image('images/zione-logo.webp')
     st.title('🙋🏻‍♀️ ¡Hola! Soy Ziomara.')
     selected_persona = st.sidebar.selectbox(
         'Escoge la personalidad de Ziomara', 
@@ -581,7 +597,7 @@ st.sidebar.button('Borrar ventana de Chat', on_click=clear_chat_history)
 
 # Messages loop
 if "messages" not in st.session_state:
-    st.session_state.messages = [{"role": "assistant", "content": "¿Cómo puedo asistirte hoy?"}]
+    st.session_state.messages = [{"role": "assistant", "content": "¡Hola! Es un placer atenderte para lo que necesites. 😄"}]
 
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
