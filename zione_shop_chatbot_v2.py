@@ -5,12 +5,14 @@ import os
 
 os.environ['GOOGLE_CLOUD_PROJECT'] = '622502247148'
 
+project_id = "622502247148"
+
 # Initialize the Vertex AI model
 vertexai.init(
     project="perfect-crawler-401616",
     location="us-central1",
     )
-chat_model = ChatModel.from_pretrained("chat-bison@001")
+chat_model = ChatModel.from_pretrained("chat-bison@001", project_id=project_id)
 
 # Function for generating Ziomara Chatbot responses
 def generate_ziomara_chatbot_response(prompt_input, selected_examples, max_output_tokens, top_p, top_k, temperature=0.2):
