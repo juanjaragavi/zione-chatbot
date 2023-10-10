@@ -8,7 +8,7 @@ vertexai.init(
     project="juan-jaramillo",
     location="us-central1",
     )
-chat_model = ChatModel.from_pretrained("chat-bison")
+chat_model = ChatModel.from_pretrained("chat-bison@001")
 
 # Function for generating Ziomara Chatbot responses
 def generate_ziomara_chatbot_response(prompt_input, selected_examples, max_output_tokens, top_p, top_k, temperature=0.2):
