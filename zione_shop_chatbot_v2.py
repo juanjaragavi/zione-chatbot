@@ -3,6 +3,8 @@ from vertexai.language_models import ChatModel, InputOutputTextPair
 import streamlit as st
 import os
 
+os.environ['GOOGLE_CLOUD_PROJECT'] = '622502247148'
+
 # Initialize the Vertex AI model
 vertexai.init(
     project="perfect-crawler-401616",
