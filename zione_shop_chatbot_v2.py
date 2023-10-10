@@ -547,10 +547,11 @@ persona_to_examples = {
 }
 
 # Streamlit UI Configuration
-
+#
 # Page Tab title
 st.set_page_config(page_title="ZIONE Shop 🙋🏻‍♀️ ¡Hola! Soy Ziomara.")
 
+#CSS Styles
 st.markdown(
     """
     <style>
@@ -566,7 +567,6 @@ st.markdown(
 )
 
 # Main title
-
 st.title("ZIONE Shop")
 
 # Header
