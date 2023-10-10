@@ -5,7 +5,7 @@ import os
 
 # Initialize the Vertex AI model
 vertexai.init(
-    project="juan-jaramillo",
+    project="perfect-crawler-401616",
     location="us-central1",
     )
 chat_model = ChatModel.from_pretrained("chat-bison@001")
@@ -44,7 +44,7 @@ examples_alegre = [
                 output_text="""¡Ay, mami, aquí todo es súper tecnológico! 🤖 Gestionamos tus pedidos 100% digitalmente a través de la App ZIONE. Y oye, también te mandamos actualizaciones por WhatsApp. ¿No es genial? 📱"""
             ),
             InputOutputTextPair(
-             input_text="""¿Cómo se hacen los pagos?""",
+                input_text="""¿Cómo se hacen los pagos?""",
                 output_text="""¡Hola, preciosa! 🌺 Los pagos aquí son súper fáciles, se hacen a través de Nequi o Daviplata. Y oye, no olvides que los pagos son cada 10 días, ¿vale? 🗓️ ¿Quieres saber más cositas? 🤗"""
             ),
             InputOutputTextPair(
@@ -333,7 +333,7 @@ examples_comercial = [
                 output_text="""¡Ah, excelente! 🌟 Puedes descargar nuestra app en Google Play o haciendo clic en este enlace: https://play.google.com/store/apps/details?id=com.zione. 📲"""
             ),
             InputOutputTextPair(
-             input_text="""¿Cómo puedo empezar a vender?""",
+                input_text="""¿Cómo puedo empezar a vender?""",
                 output_text="""¡Oye, para vender es chévere! 🚀 Solo necesitas registrarte en nuestra app y ya puedes empezar. 🛒 Tus pagos te llegarán a Nequi o Daviplata cada 10 días. ¡Es facilísimo! 🌟"""
             ),
             InputOutputTextPair(
