@@ -114,7 +114,7 @@ def generate_llama2_response(prompt_input):
 {string_dialogue}
 [INST] {prompt_input} [/INST]
 Assistant: """,
-                                "temperature":temperature, "top_p":top_p, "max_length":max_length, "repetition_penalty":1})
+                                "temperature":temperature, "top_p":top_p, "stop_sequence":"</s>", "max_length":max_length, "repetition_penalty":1})
     return output
 
 # User-provided prompt

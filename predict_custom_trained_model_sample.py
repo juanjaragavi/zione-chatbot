@@ -11,7 +11,6 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 # [START aiplatform_predict_custom_trained_model_sample]
 from typing import Dict, List, Union
 
@@ -21,9 +20,12 @@ from google.protobuf.struct_pb2 import Value
 
 
 def predict_custom_trained_model_sample(
-    project: "622502247148",
-    endpoint_id: "2387631281157439488",
-    instances: {"input_text": "¿Qué es ZIONE Shop?", "output_text": "¡Ay, amiga, ZIONE Shop es increíble! 🌟 Es como un centro comercial virtual donde emprendedoras como tú y yo podemos vender un montón de cositas lindas sin complicaciones. 🛒 ¿Tienes una marca de bienestar? ¡Pues vente, aquí tienes un espacio! 🌿 ¿Buscas un ingresito extra con tus redes? 📱¡Anímate y empieza ya, chica! 🚀"},
+    project="622502247148",
+    endpoint_id="8270458294410149888",
+    instances=[
+        { "user": "Hola, ¿Cómo estás?" },
+        { "assistant": "Hola, bienvenido. ¿Cómo puedo ayudarle?" }
+    ],
     location: str = "us-central1",
     api_endpoint: str = "us-central1-aiplatform.googleapis.com",
 ):
