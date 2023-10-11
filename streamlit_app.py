@@ -108,7 +108,7 @@ def generate_llama2_response(prompt_input):
             string_dialogue += "User: " + dict_message["content"] + "\n\n"
         else:
             string_dialogue += "Assistant: " + dict_message["content"] + "\n\n"
-    output = replicate.run('meta/llama-2-70b-chat:02e509c789964a7ea8736978a43525956ef40397be9033abf9fd2badfe68c9e3',
+    output = replicate.run('nateraw/mistral-7b-openorca:6f4b63e2b340999d624767ae146aa5dfee702869f3ddb5f2f38f3c1c2a515305',
                         input={"prompt": f"""\
 {system_prompt}
 {string_dialogue}
