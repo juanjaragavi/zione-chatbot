@@ -108,7 +108,7 @@ def generate_llama2_response(prompt_input):
             string_dialogue += "User: " + dict_message["content"] + "\n\n"
         else:
             string_dialogue += "Assistant: " + dict_message["content"] + "\n\n"
-    output = replicate.run('meta/llama-2-7b-chat:8e6975e5ed6174911a6ff3d60540dfd4844201974602551e10e9e87ab143d81e',
+    output = replicate.run('juanjaragavi/llama2-summarizer:f45694f44c4f767feadbe0936383251218094d8f42edecb277a0de67492375f9',
                         input={"prompt": f"""\
 {system_prompt}
 {string_dialogue}
