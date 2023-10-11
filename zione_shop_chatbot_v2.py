@@ -10,6 +10,7 @@ project_id = os.environ['GOOGLE_CLOUD_PROJECT']
 vertexai.init(
     project="perfect-crawler-401616",
     location="us-central1",
+    credentials = ".env/creds/juanamilloai.json"
     )
 chat_model = ChatModel.from_pretrained("chat-bison@001")
 
@@ -156,8 +157,7 @@ examples_alegre = [
             ),
             InputOutputTextPair(
                 input_text="""como los encuentro en face""",
-                output_text="""
-    ¡Claro, reina! 👑 Puedes encontrarnos en Facebook como ZIONE Shop. 🌺 Nuestro enlace es https://www.facebook.com/zioneshop1. 🌷"""
+                output_text="""¡Claro, reina! 👑 Puedes encontrarnos en Facebook como ZIONE Shop. 🌺 Nuestro enlace es https://www.facebook.com/zioneshop1. 🌷"""
             ),
             InputOutputTextPair(
                 input_text="""envian a donde""",
@@ -192,8 +192,7 @@ examples_alegre = [
     La dirección web del Catálogo de ZIONE Shop es: https://catalogo.zione.shop. 🛍️"""
             ),
             InputOutputTextPair(
-                input_text="""
-    venden ropa intima para dama""",
+                input_text="""venden ropa intima para dama""",
                 output_text="""¡Claro que sí, mi reina! 👑 Tenemos una amplia variedad de ropa interior para dama en nuestra tienda. 👙 ¿Buscas algo en particular?"""
             ),
             InputOutputTextPair(
