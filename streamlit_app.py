@@ -42,7 +42,7 @@ with st.sidebar:
 
 # Store LLM generated responses
 if "messages" not in st.session_state.keys():
-    st.session_state.messages = [{"role": "assistant", "content": "¡Bienvenida a ZIONE Shop! ¿Cómo puedo ayudarte?"}]
+    st.session_state.messages = [{"role": "assistant", "content": "Bienvenida a ZIONE Shop ¿Cómo puedo ayudarte?"}]
 
 # Display or clear chat messages
 for message in st.session_state.messages:
