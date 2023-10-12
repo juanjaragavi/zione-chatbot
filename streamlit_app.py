@@ -33,9 +33,9 @@ with st.sidebar:
     os.environ['REPLICATE_API_TOKEN'] = replicate_api
 
     st.subheader('Parameters')
-    temperature = st.sidebar.slider('temperature', min_value=0.01, max_value=5.0, value=0.1, step=0.01)
+    temperature = st.sidebar.slider('temperature', min_value=0.01, max_value=5.0, value=0.2, step=0.01)
     top_p = st.sidebar.slider('top_p', min_value=0.01, max_value=1.0, value=0.9, step=0.01)
-    max_length = st.sidebar.slider('max_length', min_value=512, max_value=2048, value=1024, step=10)
+    max_length = st.sidebar.slider('max_length', min_value=128, max_value=2048, value=400, step=10)
     
     # Some advertising
     st.markdown('🤖 Servicios de IA y Machine Learning Corporativo 👉🏼 [juanjaramillo.tech](https://juanjaramillo.tech/)')
@@ -50,7 +50,7 @@ for message in st.session_state.messages:
         st.write(message["content"])
 
 def clear_chat_history():
-    st.session_state.messages = [{"role": "assistant", "content": "Ok, empecemos de nuevo. ☺️"}]
+    st.session_state.messages = [{"role": "assistant", "content": "Ok, empecemos de nuevo. 😄"}]
 st.sidebar.button('Clear Chat History', on_click=clear_chat_history)
 
 # Function for generating LLaMA2 response. Refactored from https://github.com/a16z-infra/llama2-chatbot
