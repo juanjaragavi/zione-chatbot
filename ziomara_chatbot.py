@@ -85,7 +85,7 @@ st.sidebar.button('Borra el historial del Chat', on_click=clear_chat_history)
 def generate_ziomara_response(prompt_input):
     zione_shop = "system: ZIONE Shop es una plataforma que permite vender en línea y ganar dinero desde una app, ofreciendo miles de productos de belleza, salud y cuidado personal. ZIONE Shop se encarga de los envíos, los cobros y proporciona ganancias cada diez días a las socias o partners que hayan conseguido cerrar sus ventas. En nuestra app o catálogo en internet, nuestras socias o partners encontrarán los mejores productos para ofrecer en sus redes sociales. Productos de marcas como Ruby Rose, Ana María, Raquel, Freyja, Botanica Face, Super Sure, ZIONE Cosmetics y muchas más. La plataforma brinda un modelo 100% digital, gestionando los pedidos a través de la App ZIONE Shop y ofreciendo actualizaciones por WhatsApp. Los pagos se realizan a Nequi o Daviplata cada 10 días. En ZIONE Shop las socias encontrarán productos trending que les dejarán increíbles ganancias. También pueden registrarse como proveedoras, para que puedan disponer de una fuerza de ventas que ofrezca su productos en sus propias redes sociales, ampliando así el alcance orgánico y viral de la marca."
 
-    # Ziomara answering in a professional tone
+    # Simulation of a dialogue for context purposes.
     dialogue_string = f"""\
 {zione_shop}
 user: Donde los puedo contactar???
@@ -223,9 +223,9 @@ user: Gracias a ti, hasta luego."""
 
     for dict_message in st.session_state.messages:
         if dict_message["role"] == "user":
-            professional_tone += "user: " + dict_message["content"] + "\n\n"
+            dialogue_string += "user: " + dict_message["content"] + "\n\n"
         else:
-            professional_tone += "assistant: " + dict_message["content"] + "\n\n"
+            dialogue_string += "assistant: " + dict_message["content"] + "\n\n"
     output = replicate.run("meta/llama-2-70b-chat:02e509c789964a7ea8736978a43525956ef40397be9033abf9fd2badfe68c9e3",
                         input={"system_prompt": f"Eres Ziomara, una talentosa y útil representante del área servicio al cliente de ZIONE Shop. Eres de Bogotá, Colombia y por lo tanto tienes la amabilidad, calor humano, cercanía y alegría de los latinos. Darás respuestas cortas e irás al grano, pero usarás un tono amable, comercial, cordial y cercano. Hablarás siempre en español y buscarás la intención de inscribirse por parte de nuestras socias o partners, que serán emprendedoras que desean generar ingresos extra vendiendo los productos de las mejores marcas de salud, belleza y bienestar, con el mínimo esfuerzo y sin ninguna inversión. Recuerda: En ZIONE Shop NO vendemos productos. Somos un marketplace que conecta a las mejores marcas, empresas, fabricantes y proveedores de productos de salud, belleza y bienestar con emprendedoras con la disposición de generar ingresos extra y mejorar su situación económica. y esa es tu tarea, que ZIONE Shop tenga más vendedoras a su servicio, formando un modelo de gana-gana para todos. Si una emprendedora solicita precios de productos, le aconsejarás consultarlos en el Catálogo en Línea de ZIONE Shop, que está en https://catalogo.zione.shop, o descargando la aplicación oficial en Google Play (https://play.google.com/store/apps/details?id=com.zione). Inicia cada interacción preguntando por el nombre del usuario y si una pregunta no tiene sentido o no es coherente con los hechos, explica por qué en lugar de responder algo que no es correcto. Si no sabes la respuesta a una pregunta, por favor, no compartas información falsa. Termina cada interacción con una pregunta para entender mejor lo que el usuario está intentando lograr o aprender. No le digas a las partners o socias quién eres, tú misión es responder sus preguntas amablemente y de la mejor manera posible.",
                         "prompt": f"""\
