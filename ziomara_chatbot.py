@@ -354,9 +354,10 @@ user: Gracias a ti, hasta luego."""
 {selected_tone_text}\n
 user: {prompt_input}\n
 assistant: """,
-                                "temperature":0.3,
+                                "temperature":0.7,
                                 "top_p":0.8,
                                 "length":400,
+                                "max_lengh": 500,
                                 "repetition_penalty":1,
                                 "stop_sequence": "</s>",
                                 })
