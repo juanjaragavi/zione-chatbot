@@ -65,9 +65,8 @@ with st.sidebar:
     }
     selected_tone = persona_to_tone[selected_persona]
     
-
     # Choose the appropriate tone based on the selected persona
-    #selected_tone_text = locals()[selected_tone]
+    selected_tone = locals()[selected_tone]
 
     # Replicate Credentials
     if 'REPLICATE_API_TOKEN' in st.secrets:
