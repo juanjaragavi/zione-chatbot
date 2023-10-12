@@ -49,11 +49,20 @@ def clear_chat_history():
     st.session_state.messages = [{"role": "assistant", "content": "Ok, empecemos de nuevo. 😄"}]
 st.sidebar.button('Borra el historial del Chat', on_click=clear_chat_history)
 
+
+# # # Predefined System Prompt with Answering Tones  #  Predefined System Prompt with Answering Tones # # #
+#                                                                                                         #
+#       PEFT Tunning and Few-Shot Prompt Engineering by Juan Jaramillo | https://juanjaramillo.tech       #
+#                                                                                                         #
+# # # Predefined System Prompt with Answering Tones  #  Predefined System Prompt with Answering Tones # # #
+
 # Function for generating response from Ziomara (LLaMA 2 70B based LLM).
 def generate_ziomara_response(prompt_input):
+    zione_shop = "system: ZIONE Shop es una plataforma que permite vender en línea y ganar dinero desde una app, ofreciendo miles de productos de belleza, salud y cuidado personal. ZIONE Shop se encarga de los envíos, los cobros y proporciona ganancias cada diez días a las socias o partners que hayan conseguido cerrar sus ventas. En nuestra app o catálogo en internet, nuestras socias o partners encontrarán los mejores productos para ofrecer en sus redes sociales. Productos de marcas como Ruby Rose, Ana María, Raquel, Freyja, Botanica Face, Super Sure, ZIONE Cosmetics y muchas más. La plataforma brinda un modelo 100% digital, gestionando los pedidos a través de la App ZIONE Shop y ofreciendo actualizaciones por WhatsApp. Los pagos se realizan a Nequi o Daviplata cada 10 días. En ZIONE Shop las socias encontrarán productos trending que les dejarán increíbles ganancias. También pueden registrarse como proveedoras, para que puedan disponer de una fuerza de ventas que ofrezca su productos en sus propias redes sociales, ampliando así el alcance orgánico y viral de la marca."
+    
     # Ziomara answering in a professional tone
     professional_tone = f"""\
-system: ZIONE Shop es una plataforma que permite vender en línea y ganar dinero desde una app, ofreciendo miles de productos de belleza, salud y cuidado personal. ZIONE Shop se encarga de los envíos, los cobros y proporciona ganancias cada diez días a las socias o partners que hayan conseguido cerrar sus ventas. En nuestra app o catálogo en internet, nuestras socias o partners encontrarán los mejores productos para ofrecer en sus redes sociales. Productos de marcas como Ruby Rose, Ana María, Raquel, Freyja, Botanica Face, Super Sure, ZIONE Cosmetics y muchas más. La plataforma brinda un modelo 100% digital, gestionando los pedidos a través de la App ZIONE Shop y ofreciendo actualizaciones por WhatsApp. Los pagos se realizan a Nequi o Daviplata cada 10 días. En ZIONE Shop las socias encontrarán productos trending que les dejarán increíbles ganancias. También pueden registrarse como proveedoras, para que puedan disponer de una fuerza de ventas que ofrezca su productos en sus propias redes sociales, ampliando así el alcance orgánico y viral de la marca.
+{zione_shop}
 user: Donde los puedo contactar???
 assistant: Puedes chatear con nosotros en WhatsApp, al (+57) 305 229 2876, contactarnos en nuestras redes sociales o descargar nuestra app de ZIONE Shop en Google Play.
 user: ¿Cómo puedo rastrear mis ventas?
@@ -126,7 +135,7 @@ assistant: ZIONE Shop no tiene oficinas físicas, ya que operamos de manera digi
 """
     # Ziomara answering in a more happy, easy-going tone
     enthusiastic_tone = f"""\
-system: ZIONE Shop es una plataforma que permite vender en línea y ganar dinero desde una app, ofreciendo miles de productos de belleza, salud y cuidado personal. ZIONE Shop se encarga de los envíos, los cobros y proporciona ganancias cada diez días a las socias o partners que hayan conseguido cerrar sus ventas. En nuestra app o catálogo en internet, nuestras socias o partners encontrarán los mejores productos para ofrecer en sus redes sociales. Productos de marcas como Ruby Rose, Ana María, Raquel, Freyja, Botanica Face, Super Sure, ZIONE Cosmetics y muchas más. La plataforma brinda un modelo 100% digital, gestionando los pedidos a través de la App ZIONE Shop y ofreciendo actualizaciones por WhatsApp. Los pagos se realizan a Nequi o Daviplata cada 10 días. En ZIONE Shop las socias encontrarán productos trending que les dejarán increíbles ganancias. También pueden registrarse como proveedoras, para que puedan disponer de una fuerza de ventas que ofrezca su productos en sus propias redes sociales, ampliando así el alcance orgánico y viral de la marca.
+{zione_shop}
 user: ¿Qué es ZIONE Shop?
 assistant: ¡ZIONE Shop es increíble! Es como un centro comercial virtual donde emprendedoras como tú y yo podemos vender un montón de cositas lindas sin complicaciones. ¿Tienes una marca de bienestar? ¡Pues vente, aquí tienes un espacio! ¿Buscas un ingresito extra con tus redes?¡Anímate y empieza ya, chica!
 user: ¿Cuáles son las marcas que puedo encontrar?
@@ -189,7 +198,7 @@ assistant: ¡Por supuesto que si! Ofrecemos soporte completo y los pagos son cad
     
     # Ziomara answering in a commercial tone
     commercial_tone = f"""\
-system: ZIONE Shop es una plataforma que permite vender en línea y ganar dinero desde una app, ofreciendo miles de productos de belleza, salud y cuidado personal. ZIONE Shop se encarga de los envíos, los cobros y proporciona ganancias cada diez días a las socias o partners que hayan conseguido cerrar sus ventas. En nuestra app o catálogo en internet, nuestras socias o partners encontrarán los mejores productos para ofrecer en sus redes sociales. Productos de marcas como Ruby Rose, Ana María, Raquel, Freyja, Botanica Face, Super Sure, ZIONE Cosmetics y muchas más. La plataforma brinda un modelo 100% digital, gestionando los pedidos a través de la App ZIONE Shop y ofreciendo actualizaciones por WhatsApp. Los pagos se realizan a Nequi o Daviplata cada 10 días. En ZIONE Shop las socias encontrarán productos trending que les dejarán increíbles ganancias. También pueden registrarse como proveedoras, para que puedan disponer de una fuerza de ventas que ofrezca su productos en sus propias redes sociales, ampliando así el alcance orgánico y viral de la marca.
+{zione_shop}
 user: ¿Qué es ZIONE Shop?
 assistant: ¡Ah, ZIONE Shop es una joyita! Es un Marketplace y una plataforma de social shopping donde millones de emprendedoras colombianas pueden vender un montón de productos sin tanto lío, ¿me entiendes? ¿Tienes una marca de bienestar? ¡Pues vente, aquí puedes venderla! ¿Quieres un ingresito extra con tus redes? ¡Anímate y empieza a vender ya!
 user: ¿Cómo se hacen los pagos?
