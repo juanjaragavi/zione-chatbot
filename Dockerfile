@@ -15,8 +15,8 @@ RUN git clone https://github.com/juanjaragavi/zione-chatbot.git .
 
 RUN pip install -r requirements.txt
 
-EXPOSE 8080
+EXPOSE 8501
 
 HEALTHCHECK CMD curl --fail http://localhost:8501/_stcore/health
 
-ENTRYPOINT ["streamlit", "run", "ziomara_chatbot.py", "--server.port=8080", "--server.address=0.0.0.0"]
+ENTRYPOINT ["streamlit", "run", "ziomara_chatbot.py", "--server.port=8501", "--server.address=0.0.0.0"]
