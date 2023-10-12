@@ -208,9 +208,8 @@ if prompt := st.chat_input(disabled=not replicate_api):
 # Generate a new response if last message is not from assistant
 if st.session_state.messages[-1]["role"] != "assistant":
     with st.chat_message("assistant"):
-        with st.spinner("🤔 Déjame lo pienso..."):
-
-            # Pass the prompt `generate_ziomara_response` function
+        with st.spinner("Thinking..."):
+            
             response = generate_ziomara_response(prompt)
             placeholder = st.empty()
             full_response = ''
