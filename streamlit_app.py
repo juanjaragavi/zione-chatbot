@@ -31,11 +31,6 @@ with st.sidebar:
     if 'REPLICATE_API_TOKEN' in st.secrets:
         replicate_api = st.secrets['REPLICATE_API_TOKEN']
     os.environ['REPLICATE_API_TOKEN'] = replicate_api
-
-    st.subheader('Afina las Respuestas de Ziomara')
-    temperature = st.sidebar.slider('temperature', min_value=0.01, max_value=5.0, value=0.2, step=0.01)
-    top_p = st.sidebar.slider('top_p', min_value=0.01, max_value=1.0, value=0.9, step=0.01)
-    max_length = st.sidebar.slider('max_length', min_value=128, max_value=2048, value=400, step=10)
     
     # Some advertising
     st.markdown('🤖 Servicios de IA y Machine Learning Corporativo 👉🏼 [juanjaramillo.tech](https://juanjaramillo.tech/)')
@@ -145,7 +140,12 @@ assistant: ZIONE Shop no tiene oficinas físicas, ya que operamos de manera digi
 {professional_tone}\n
 user: {prompt_input}\n
 assistant: """,
-                                "temperature":temperature, "top_p":top_p, "max_length":max_length, "repetition_penalty":1})
+                                "temperature":0.3,
+                                "top_p":0.8,
+                                "length":400,
+                                "repetition_penalty":1,
+                                "stop_sequence": "</s>",
+                                })
     return output
 
 
