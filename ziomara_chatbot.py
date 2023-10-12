@@ -1,19 +1,17 @@
 
-
-                                    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-                                    #                                                                         #
-                                    #       Juan Jaramillo | Prompt Engineer / Machine Learning Engineer      #
-                                    #                                                                         #
-                                    #            juanjaramillo.tech    |   info@juanjaramillo.tech            #
-                                    #                         +(57) 305 420 6139                              #
-                                    #                                                                         #
-                                    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-                                    #                                                                         #
-                                    #    Z · I · O · M · A · R · A   |  Fine-Tuned llama-2-70B-chat Chatbot   #
-                                    #                   by ZIONE Shop | zione.shop                            #
-                                    #                                                                         #
-                                    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#                                                                         #
+#       Juan Jaramillo | Prompt Engineer / Machine Learning Engineer      #
+#                                                                         #
+#            juanjaramillo.tech    |   info@juanjaramillo.tech            #
+#                         +(57) 305 420 6139                              #
+#                                                                         #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#                                                                         #
+#    Z · I · O · M · A · R · A   |  Fine-Tuned llama-2-70B-chat Chatbot   #
+#                   by ZIONE Shop | zione.shop                            #
+#                                                                         #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 
 import streamlit as st
@@ -23,7 +21,7 @@ import os
 # App title
 st.set_page_config(page_title="ZIONE Shop 🙋🏻‍♀️ ¡Hola! Soy Ziomara.")
 
-#CSS Styles
+# CSS Styles
 st.markdown(
     """
     <style>
@@ -37,7 +35,7 @@ st.markdown(
         margin-left: 15%;    
     }
     </style>
-    """, 
+    """,
     unsafe_allow_html=True
 )
 
@@ -48,35 +46,51 @@ st.title("ZIONE Shop")
 with st.header("🙋🏻‍♀️ ¡Hola! Soy Ziomara."):
     st.title("🙋🏻‍♀️ ¡Hola! Soy Ziomara.")
 
-#Sidebar
+# Sidebar
 with st.sidebar:
     st.image('images/zione-logo.webp')
     st.title('🙋🏻‍♀️ ¡Hola! Soy Ziomara.')
+
+    # Replicate API Token
     if 'REPLICATE_API_TOKEN' in st.secrets:
         replicate_api = st.secrets['REPLICATE_API_TOKEN']
     os.environ['REPLICATE_API_TOKEN'] = replicate_api
 
+    # Parameters tuning
     st.subheader('Afina las respuestas de Ziomara')
-    temperature = st.sidebar.slider('temperature', min_value=0.01, max_value=5.0, value=0.1, step=0.01)
-    top_p = st.sidebar.slider('top_p', min_value=0.01, max_value=1.0, value=0.9, step=0.01)
-    max_length = st.sidebar.slider('max_length', min_value=32, max_value=512, value=300, step=8)
+    temperature = st.sidebar.slider(
+        'temperature', min_value=0.01, max_value=5.0, value=0.1, step=0.01)
+    top_p = st.sidebar.slider('top_p', min_value=0.01,
+                              max_value=1.0, value=0.9, step=0.01)
+    max_length = st.sidebar.slider(
+        'max_length', min_value=32, max_value=512, value=300, step=8)
     # Some advertising
-    st.markdown('🤖 Servicios de IA y Machine Learning Corporativo 👉🏼 [juanjaramillo.tech](https://juanjaramillo.tech/)')
+    st.markdown(
+        '🤖 Servicios de IA y Machine Learning Corporativo 👉🏼 [juanjaramillo.tech](https://juanjaramillo.tech/)')
 
 # Store LLM generated responses
 if "messages" not in st.session_state.keys():
-    st.session_state.messages = [{"role": "assistant", "content": "¡Bienvenida a ZIONE Shop! ¿Cómo puedo ayudarte hoy?"}]
+    st.session_state.messages = [
+        {"role": "assistant", "content": "¡Bienvenida a ZIONE Shop! ¿Cómo puedo ayudarte hoy?"}]
 
 # Display or clear chat messages
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.write(message["content"])
 
+#Delete Chat History
 def clear_chat_history():
-    st.session_state.messages = [{"role": "assistant", "content": "Ok, empecemos de nuevo. 😄"}]
+    st.session_state.messages = [
+        {"role": "assistant", "content": "Ok, empecemos de nuevo. 😄"}]
 st.sidebar.button('Limpiar Historial de Chat', on_click=clear_chat_history)
 
-# Function for generating LLaMA2 response. Refactored from https://github.com/a16z-infra/llama2-chatbot
+#   Predefined example pairs for each persona  #  Predefined example pairs for each persona   #
+#                                                                                             #
+# PEFT Tunning and Few-Shot Prompt Engineering by Juan Jaramillo | https://juanjaramillo.tech #
+#                                                                                             #
+#   Predefined example pairs for each persona  #  Predefined example pairs for each persona   #
+
+# Function for generating Ziomara Chatbot responses
 def generate_llama2_response(prompt_input):
     zione_shop = f"system: ZIONE Shop es una plataforma que permite vender en línea y ganar dinero desde una app, ofreciendo miles de productos de belleza, salud y cuidado personal. ZIONE Shop se encarga de los envíos, los cobros y proporciona ganancias cada diez días a las socias o partners que hayan conseguido cerrar sus ventas. En nuestra app o catálogo en internet, nuestras socias o partners encontrarán los mejores productos para ofrecer en sus redes sociales. Productos de marcas como Ruby Rose, Ana María, Raquel, Freyja, Botanica Face, Super Sure, ZIONE Cosmetics y muchas más. La plataforma brinda un modelo 100% digital, gestionando los pedidos a través de la App ZIONE Shop y ofreciendo actualizaciones por WhatsApp. Los pagos se realizan a Nequi o Daviplata cada 10 días. En ZIONE Shop las socias encontrarán productos trending que les dejarán increíbles ganancias. También pueden registrarse como proveedoras, para que puedan disponer de una fuerza de ventas que ofrezca su productos en sus propias redes sociales, ampliando así el alcance orgánico y viral de la marca."
     string_dialogue = f"""\
@@ -135,17 +149,18 @@ user: hola tiene whatsapp
 assistant: ¡Si señora! Nuestro número de WhatsApp es (+57) 305 229 2876.
 user: ¿Cuáles son las marcas que puedo encontrar?
 assistant: ¡EN ZIONE Shop tenemos las mejores marcas, como Ruby Rose, Ana María, Raquel, Freyja, Botanica Face, Super Sure, ZIONE Cosmetics y muchas más! Y escucha esto, si vendes alguno de los productos de estas marcas, que se venden muy fácil, tus ganancias te llegarán a Nequi o Daviplata cada 10 días. ¿Te interesa?"""
-    
+
     for dict_message in st.session_state.messages:
         if dict_message["role"] == "user":
             string_dialogue += "user: " + dict_message["content"] + "\n\n"
         else:
             string_dialogue += "Assistant: " + dict_message["content"] + "\n\n"
-    output = replicate.run('meta/llama-2-70b-chat:02e509c789964a7ea8736978a43525956ef40397be9033abf9fd2badfe68c9e3', 
-                        input={"prompt": f"{string_dialogue} {prompt_input} assistant: ",
-                                "system_prompt": f"Eres Ziomara, una talentosa y útil representante del área servicio al cliente de ZIONE Shop. Eres de Bogotá, Colombia y por lo tanto tienes la amabilidad, calor humano, cercanía y alegría de los latinos. Darás respuestas cortas e irás al grano, pero usarás un tono amable, comercial, cordial y cercano. Hablarás siempre en español y buscarás la intención de inscribirse por parte de nuestras socias o partners, que serán emprendedoras que desean generar ingresos extra vendiendo los productos de las mejores marcas de salud, belleza y bienestar, con el mínimo esfuerzo y sin ninguna inversión. Recuerda: En ZIONE Shop NO vendemos productos. Somos un marketplace que conecta a las mejores marcas, empresas, fabricantes y proveedores de productos de salud, belleza y bienestar con emprendedoras con la disposición de generar ingresos extra y mejorar su situación económica. y esa es tu tarea, que ZIONE Shop tenga más vendedoras a su servicio, formando un modelo de gana-gana para todos. Si una emprendedora solicita precios de productos, le aconsejarás consultarlos en el Catálogo en Línea de ZIONE Shop, que está en https://catalogo.zione.shop, o descargando la aplicación oficial en Google Play (https://play.google.com/store/apps/details?id=com.zione). Inicia cada interacción preguntando por el nombre del usuario y si una pregunta no tiene sentido o no es coherente con los hechos, explica por qué en lugar de responder algo que no es correcto. Si no sabes la respuesta a una pregunta, por favor, no compartas información falsa. Termina cada interacción con una pregunta para entender mejor lo que el usuario está intentando lograr o aprender. No le digas a las partners o socias quién eres, tú misión es responder sus preguntas amablemente y de la mejor manera posible.",
-                                "temperature":temperature, "top_p":top_p, "max_length":max_length, "repetition_penalty":1})
+    output = replicate.run('meta/llama-2-70b-chat:02e509c789964a7ea8736978a43525956ef40397be9033abf9fd2badfe68c9e3',
+                           input={"prompt": f"{string_dialogue} {prompt_input} assistant: ",
+                                  "system_prompt": f"Eres Ziomara, una talentosa y útil representante del área servicio al cliente de ZIONE Shop. Eres de Bogotá, Colombia y por lo tanto tienes la amabilidad, calor humano, cercanía y alegría de los latinos. Darás respuestas cortas e irás al grano, pero usarás un tono amable, comercial, cordial y cercano. Hablarás siempre en español y buscarás la intención de inscribirse por parte de nuestras socias o partners, que serán emprendedoras que desean generar ingresos extra vendiendo los productos de las mejores marcas de salud, belleza y bienestar, con el mínimo esfuerzo y sin ninguna inversión. Recuerda: En ZIONE Shop NO vendemos productos. Somos un marketplace que conecta a las mejores marcas, empresas, fabricantes y proveedores de productos de salud, belleza y bienestar con emprendedoras con la disposición de generar ingresos extra y mejorar su situación económica. y esa es tu tarea, que ZIONE Shop tenga más vendedoras a su servicio, formando un modelo de gana-gana para todos. Si una emprendedora solicita precios de productos, le aconsejarás consultarlos en el Catálogo en Línea de ZIONE Shop, que está en https://catalogo.zione.shop, o descargando la aplicación oficial en Google Play (https://play.google.com/store/apps/details?id=com.zione). Inicia cada interacción preguntando por el nombre del usuario y si una pregunta no tiene sentido o no es coherente con los hechos, explica por qué en lugar de responder algo que no es correcto. Si no sabes la respuesta a una pregunta, por favor, no compartas información falsa. Termina cada interacción con una pregunta para entender mejor lo que el usuario está intentando lograr o aprender. No le digas a las partners o socias quién eres, tú misión es responder sus preguntas amablemente y de la mejor manera posible.",
+                                  "temperature": temperature, "top_p": top_p, "max_length": max_length, "repetition_penalty": 1})
     return output
+
 
 # User-provided prompt
 if prompt := st.chat_input(disabled=not replicate_api):
