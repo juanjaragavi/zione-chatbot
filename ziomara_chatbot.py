@@ -33,6 +33,9 @@ st.markdown(
     p {
         font-family: 'Quicksand', sans-serif;
     }
+    img {
+        margin-left: 15%;    
+    }
     </style>
     """, 
     unsafe_allow_html=True
