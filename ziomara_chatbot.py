@@ -66,6 +66,9 @@ with st.sidebar:
     
     selected_tone = persona_to_tone[selected_persona]
 
+    # Choose the appropriate tone based on the selected persona
+    selected_tone_text = locals()[selected_tone]
+
     # Replicate Credentials
     if 'REPLICATE_API_TOKEN' in st.secrets:
         replicate_api = st.secrets['REPLICATE_API_TOKEN']
@@ -339,9 +342,6 @@ assistant: Creo que ya había conversado contigo y me habías preguntado eso.
 user: Sí, lo recuerdo. Era una conversación diferente. Disculpa si me equivoqué. En cualquier caso, como supervisora del área de servicio al cliente, quiero asegurarme de que nuestras colaboradoras estén brindando la mejor atención al cliente posible. Por lo tanto, les haré algunas preguntas para evaluar su conocimiento y habilidades en el área de belleza y cuidado personal.
 assistant: Si, claro. ¡No hay ningún problema! Nuestro propósito es brindar siempre la mejor atención.
 user: Gracias a ti, hasta luego."""
-    
-    # Choose the appropriate tone based on the selected persona
-    selected_tone_text = locals()[selected_tone]
 
     for dict_message in st.session_state.messages:
         if dict_message["role"] == "user":
@@ -374,7 +374,7 @@ if st.session_state.messages[-1]["role"] != "assistant":
         with st.spinner("🤔 Déjame lo pienso..."):
 
             # Pass the selected_tone to `generate_ziomara_response` function
-            response = generate_ziomara_response(prompt, selected_tone)
+            response = generate_ziomara_response(prompt, selected_tone_text)
             placeholder = st.empty()
             full_response = ''
             for item in response:
