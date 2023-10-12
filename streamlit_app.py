@@ -51,7 +51,7 @@ for message in st.session_state.messages:
 
 def clear_chat_history():
     st.session_state.messages = [{"role": "assistant", "content": "Ok, empecemos de nuevo. 😄"}]
-st.sidebar.button('Clear Chat History', on_click=clear_chat_history)
+st.sidebar.button('Borra el historial del Chat', on_click=clear_chat_history)
 
 # Function for generating LLaMA2 response. Refactored from https://github.com/a16z-infra/llama2-chatbot
 def generate_ziomara_response(prompt_input):
