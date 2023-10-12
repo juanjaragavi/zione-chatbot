@@ -3,7 +3,7 @@ version: '3.8'
 services:
   zione-chatbot:
     image: zione-chatbot
-    container_name: zione-chatbot
+    container_name: kind_swartz
     ports:
       - "8501:8501"
     volumes:
