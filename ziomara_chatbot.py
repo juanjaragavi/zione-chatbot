@@ -34,7 +34,7 @@ st.markdown(
         font-family: 'Quicksand', sans-serif;
     }
     img {
-        margin-left: 50px;    
+        margin-left: 16%;    
     }
     </style>
     """, 
