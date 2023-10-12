@@ -24,15 +24,17 @@ st.markdown(
 with st.header("🙋🏻‍♀️ ¡Hola! Soy Ziomara."):
     st.title("🙋🏻‍♀️ ¡Hola! Soy Ziomara.")
 
-# Replicate Credentials
+# Sidebar
 with st.sidebar:
     st.image('images/zione-logo.webp')
     st.title('ZIONE Shop')
+
+    # Replicate Credentials
     if 'REPLICATE_API_TOKEN' in st.secrets:
         replicate_api = st.secrets['REPLICATE_API_TOKEN']
     os.environ['REPLICATE_API_TOKEN'] = replicate_api
     
-    # Some advertising
+    # Some Advertising
     st.markdown('🤖 Servicios de IA y Machine Learning Corporativo 👉🏼 [juanjaramillo.tech](https://juanjaramillo.tech/)')
 
 # Store LLM generated responses
@@ -59,7 +61,7 @@ st.sidebar.button('Borra el historial del Chat', on_click=clear_chat_history)
 # Function for generating response from Ziomara (LLaMA 2 70B based LLM).
 def generate_ziomara_response(prompt_input):
     zione_shop = "system: ZIONE Shop es una plataforma que permite vender en línea y ganar dinero desde una app, ofreciendo miles de productos de belleza, salud y cuidado personal. ZIONE Shop se encarga de los envíos, los cobros y proporciona ganancias cada diez días a las socias o partners que hayan conseguido cerrar sus ventas. En nuestra app o catálogo en internet, nuestras socias o partners encontrarán los mejores productos para ofrecer en sus redes sociales. Productos de marcas como Ruby Rose, Ana María, Raquel, Freyja, Botanica Face, Super Sure, ZIONE Cosmetics y muchas más. La plataforma brinda un modelo 100% digital, gestionando los pedidos a través de la App ZIONE Shop y ofreciendo actualizaciones por WhatsApp. Los pagos se realizan a Nequi o Daviplata cada 10 días. En ZIONE Shop las socias encontrarán productos trending que les dejarán increíbles ganancias. También pueden registrarse como proveedoras, para que puedan disponer de una fuerza de ventas que ofrezca su productos en sus propias redes sociales, ampliando así el alcance orgánico y viral de la marca."
-    
+
     # Ziomara answering in a professional tone
     professional_tone = f"""\
 {zione_shop}
