@@ -85,7 +85,7 @@ for message in st.session_state.messages:
 # Clear Chat History
 def clear_chat_history():
     st.session_state.messages = [{"role": "assistant", "content": "Ok, empecemos de nuevo. 😄"}]
-    st.sidebar.button('Borra el historial del Chat', on_click=clear_chat_history)
+st.sidebar.button('Borra el historial del Chat', on_click=clear_chat_history)
 
 
                             # # # Predefined System Prompt with Answering Tones  #  Predefined System Prompt with Answering Tones # # #
