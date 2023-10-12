@@ -29,13 +29,12 @@ st.markdown(
     <style>
     h1, h2, h3 {
         font-family: 'Quicksand', sans-serif;
-        text-align: center;
     }
     p {
         font-family: 'Quicksand', sans-serif;
     }
     img {
-        margin-left: 17%;    
+        margin: 10%;
     }
     </style>
     """, 
