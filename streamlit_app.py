@@ -54,7 +54,7 @@ def clear_chat_history():
 st.sidebar.button('Clear Chat History', on_click=clear_chat_history)
 
 # Function for generating LLaMA2 response. Refactored from https://github.com/a16z-infra/llama2-chatbot
-def generate_llama2_response(prompt_input):
+def generate_ziomara_response(prompt_input):
     string_dialogue = f"""\
 user: Donde los puedo contactar???
 assistant: Puedes chatear con nosotros en WhatsApp, al (+57) 305 229 2876, contactarnos en nuestras redes sociales o descargar nuestra app de ZIONE Shop en Google Play.
@@ -154,8 +154,8 @@ if prompt := st.chat_input(disabled=not replicate_api):
 # Generate a new response if last message is not from assistant
 if st.session_state.messages[-1]["role"] != "assistant":
     with st.chat_message("assistant"):
-        with st.spinner("Thinking..."):
-            response = generate_llama2_response(prompt)
+        with st.spinner("🤔 Déjame lo pienso..."):
+            response = generate_ziomara_response(prompt)
             placeholder = st.empty()
             full_response = ''
             for item in response:
