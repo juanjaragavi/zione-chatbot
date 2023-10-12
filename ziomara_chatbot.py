@@ -29,6 +29,8 @@ st.markdown(
     <style>
     h1, h2, h3 {
         font-family: 'Quicksand', sans-serif;
+    }
+    h2, h3 {
         text-align: center;
     }
     p {
