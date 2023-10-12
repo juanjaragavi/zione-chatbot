@@ -51,21 +51,25 @@ with st.sidebar:
     st.image('images/zione-logo.webp')
     st.title('ZIONE Shop')
 
-    # Selectbox for persona
-    selected_persona = st.sidebar.selectbox(
-        'Escoge la personalidad de Ziomara', 
-        ['Alegre y Amigable', 'Comercial y Convincente', 'Profesional y Seria'],
-        key='selected_persona'
-    )
-    
-    # Map selected persona to predefined response tones
-    persona_to_tone = {
-        'Alegre y Amigable': 'enthusiastic_tone',
-        'Comercial y Convincente': 'commercial_tone',
-        'Profesional y Seria': 'professional_tone'
-    }
-    
-    selected_tone = persona_to_tone[selected_persona]
+    # Initialize last_selected_persona in session state
+    if 'last_selected_persona' not in st.session_state:
+        st.session_state.last_selected_persona = None
+
+        # Selectbox for persona
+        selected_persona = st.sidebar.selectbox(
+            'Escoge la personalidad de Ziomara', 
+            ['Alegre y Amigable', 'Comercial y Convincente', 'Profesional y Seria'],
+            key='selected_persona'
+        )
+        
+        # Map selected persona to predefined response tones
+        persona_to_tone = {
+            'Alegre y Amigable': 'enthusiastic_tone',
+            'Comercial y Convincente': 'commercial_tone',
+            'Profesional y Seria': 'professional_tone'
+        }
+        
+        
 
     # Replicate Credentials
     if 'REPLICATE_API_TOKEN' in st.secrets:
@@ -88,6 +92,13 @@ for message in st.session_state.messages:
 def clear_chat_history():
     st.session_state.messages = [{"role": "assistant", "content": "Ok, empecemos de nuevo. 😄"}]
 st.sidebar.button('Borra el historial del Chat', on_click=clear_chat_history)
+
+# Check if persona has changed
+if st.session_state.last_selected_persona != selected_persona:
+    clear_chat_history()
+    st.session_state.last_selected_persona = selected_persona
+
+    selected_tone = persona_to_tone[selected_persona]
 
 
                             # # # Predefined System Prompt with Answering Tones  #  Predefined System Prompt with Answering Tones # # #
