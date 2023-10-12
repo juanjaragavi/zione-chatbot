@@ -53,15 +53,15 @@ with st.sidebar:
     # Selectbox for persona
     selected_persona = st.sidebar.selectbox(
         'Escoge la personalidad de Ziomara', 
-        ['Más alegre y amigable', 'Más comercial y convincente', 'Más profesional y seria'],
+        ['Alegre y Amigable', 'Comercial y Convincente', 'Profesional y Seria'],
         key='selected_persona'
     )
     
     # Map selected persona to predefined response tones
     persona_to_tone = {
-        'Más alegre y amigable': 'enthusiastic_tone',
-        'Más comercial y convincente': 'commercial_tone',
-        'Más profesional y seria': 'professional_tone'
+        'Alegre y Amigable': 'enthusiastic_tone',
+        'Comercial y Convincente': 'commercial_tone',
+        'Profesional y Seria': 'professional_tone'
     }
     
     selected_tone = persona_to_tone[selected_persona]
