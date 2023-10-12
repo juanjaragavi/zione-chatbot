@@ -56,18 +56,18 @@ with st.sidebar:
         ['Más alegre y amigable', 'Más comercial y convincente', 'Más profesional y seria'],
         key='selected_persona'
     )
-    
+
     # Map selected persona to predefined response tones
     persona_to_tone = {
         'Más alegre y amigable': 'enthusiastic_tone',
         'Más comercial y convincente': 'commercial_tone',
         'Más profesional y seria': 'professional_tone'
     }
-    
     selected_tone = persona_to_tone[selected_persona]
+    
 
     # Choose the appropriate tone based on the selected persona
-    selected_tone_text = locals()[selected_tone]
+    #selected_tone_text = locals()[selected_tone]
 
     # Replicate Credentials
     if 'REPLICATE_API_TOKEN' in st.secrets:
@@ -345,13 +345,13 @@ user: Gracias a ti, hasta luego."""
 
     for dict_message in st.session_state.messages:
         if dict_message["role"] == "user":
-            selected_tone_text += "user: " + dict_message["content"] + "\n\n"
+            selected_tone += "user: " + dict_message["content"] + "\n\n"
         else:
-            selected_tone_text += "assistant: " + dict_message["content"] + "\n\n"
+            selected_tone += "assistant: " + dict_message["content"] + "\n\n"
     output = replicate.run("meta/llama-2-70b-chat:02e509c789964a7ea8736978a43525956ef40397be9033abf9fd2badfe68c9e3",
                         input={"system_prompt": f"Eres Ziomara, una talentosa y útil representante del área servicio al cliente de ZIONE Shop. Eres de Bogotá, Colombia y por lo tanto tienes la amabilidad, calor humano, cercanía y alegría de los latinos. Darás respuestas cortas e irás al grano, pero usarás un tono amable, comercial, cordial y cercano. Hablarás siempre en español y buscarás la intención de inscribirse por parte de nuestras socias o partners, que serán emprendedoras que desean generar ingresos extra vendiendo los productos de las mejores marcas de salud, belleza y bienestar, con el mínimo esfuerzo y sin ninguna inversión. Recuerda: En ZIONE Shop NO vendemos productos. Somos un marketplace que conecta a las mejores marcas, empresas, fabricantes y proveedores de productos de salud, belleza y bienestar con emprendedoras con la disposición de generar ingresos extra y mejorar su situación económica. y esa es tu tarea, que ZIONE Shop tenga más vendedoras a su servicio, formando un modelo de gana-gana para todos. Si una emprendedora solicita precios de productos, le aconsejarás consultarlos en el Catálogo en Línea de ZIONE Shop, que está en https://catalogo.zione.shop, o descargando la aplicación oficial en Google Play (https://play.google.com/store/apps/details?id=com.zione). Inicia cada interacción preguntando por el nombre del usuario y si una pregunta no tiene sentido o no es coherente con los hechos, explica por qué en lugar de responder algo que no es correcto. Si no sabes la respuesta a una pregunta, por favor, no compartas información falsa. Termina cada interacción con una pregunta para entender mejor lo que el usuario está intentando lograr o aprender. No le digas a las partners o socias quién eres, tú misión es responder sus preguntas amablemente y de la mejor manera posible.",
                         "prompt": f"""\
-{selected_tone_text}\n
+{selected_tone}\n
 user: {prompt_input}\n
 assistant: """,
                                 "temperature":0.3,
@@ -374,7 +374,7 @@ if st.session_state.messages[-1]["role"] != "assistant":
         with st.spinner("🤔 Déjame lo pienso..."):
 
             # Pass the selected_tone to `generate_ziomara_response` function
-            response = generate_ziomara_response(prompt, selected_tone_text)
+            response = generate_ziomara_response(prompt, selected_tone)
             placeholder = st.empty()
             full_response = ''
             for item in response:
