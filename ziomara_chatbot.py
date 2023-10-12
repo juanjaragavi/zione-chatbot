@@ -373,7 +373,7 @@ if st.session_state.messages[-1]["role"] != "assistant":
         with st.spinner("🤔 Déjame lo pienso..."):
 
             # Pass the selected_tone to `generate_ziomara_response` function
-            response = generate_ziomara_response(prompt, selected_tone)
+            response = generate_ziomara_response(prompt, selected_tone_text=selected_tone)
             placeholder = st.empty()
             full_response = ''
             for item in response:
