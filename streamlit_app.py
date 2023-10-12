@@ -3,27 +3,49 @@ import replicate
 import os
 
 # App title
-st.set_page_config(page_title="🦙💬 Llama 2 Chatbot")
+st.set_page_config(page_title="ZIONE Shop 🙋🏻‍♀️ ¡Hola! Soy Ziomara.")
+
+#CSS Styles
+st.markdown(
+    """
+    <style>
+    h1, h2, h3 {
+        font-family: 'Quicksand', sans-serif;
+    }
+    p {
+        font-family: 'Quicksand', sans-serif;
+    }
+    </style>
+    """, 
+    unsafe_allow_html=True
+)
+
+# Header
+with st.header("🙋🏻‍♀️ ¡Hola! Soy Ziomara."):
+    st.title("🙋🏻‍♀️ ¡Hola! Soy Ziomara.")
 
 # Replicate Credentials
 with st.sidebar:
-    st.title('🦙💬 Llama 2 Chatbot')
+    st.image('images/zione-logo.webp')
+    st.title('ZIONE Shop')
     if 'REPLICATE_API_TOKEN' in st.secrets:
         st.success('API key already provided!', icon='✅')
         replicate_api = st.secrets['REPLICATE_API_TOKEN']
-    else:
-        replicate_api = st.text_input('Enter Replicate API token:', type='password')
-        if not (replicate_api.startswith('r8_') and len(replicate_api)==40):
-            st.warning('Please enter your credentials!', icon='⚠️')
-        else:
-            st.success('Proceed to entering your prompt message!', icon='👉')
+#    else:
+#        replicate_api = st.text_input('Enter Replicate API token:', type='password')
+#        if not (replicate_api.startswith('r8_') and len(replicate_api)==40):
+#            st.warning('Please enter your credentials!', icon='⚠️')
+#        else:
+#            st.success('Proceed to entering your prompt message!', icon='👉')
     os.environ['REPLICATE_API_TOKEN'] = replicate_api
 
     st.subheader('Parameters')
     temperature = st.sidebar.slider('temperature', min_value=0.01, max_value=5.0, value=0.1, step=0.01)
     top_p = st.sidebar.slider('top_p', min_value=0.01, max_value=1.0, value=0.9, step=0.01)
     max_length = st.sidebar.slider('max_length', min_value=512, max_value=2048, value=1024, step=10)
-    st.markdown('📖 Learn how to build this app in this [blog](https://blog.streamlit.io/how-to-build-a-llama-2-chatbot/)!')
+    
+    # Some advertising
+    st.markdown('🤖 Servicios de IA y Machine Learning Corporativo 👉🏼 [juanjaramillo.tech](https://juanjaramillo.tech/)')
 
 # Store LLM generated responses
 if "messages" not in st.session_state.keys():
