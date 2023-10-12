@@ -29,7 +29,7 @@ with st.sidebar:
     st.image('images/zione-logo.webp')
     st.title('ZIONE Shop')
     if 'REPLICATE_API_TOKEN' in st.secrets:
-        st.success('API key already provided!', icon='✅')
+#        st.success('API key already provided!', icon='✅')
         replicate_api = st.secrets['REPLICATE_API_TOKEN']
 #    else:
 #        replicate_api = st.text_input('Enter Replicate API token:', type='password')
