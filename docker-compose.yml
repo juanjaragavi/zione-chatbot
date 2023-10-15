@@ -7,7 +7,7 @@ services:
     ports:
       - "8501:8501"
     volumes:
-      - juan-jaramillo-assets-storage:/app/data
+      - zione-assets-storage:/app/data
 
 volumes:
-  juan-jaramillo-assets-storage:
+  zione-assets-storage:
