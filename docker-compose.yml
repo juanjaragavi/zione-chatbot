@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   zione-chatbot:
-    image: juanjaragavi/zione-chatbot:latest
+    image: juanjaragavi/zione-chatbot:2.0
     container_name: zione-chatbot
     ports:
       - "8501:8501"
